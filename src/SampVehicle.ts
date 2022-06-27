@@ -1,8 +1,9 @@
 import {SampVehicleNativeFunctions} from "./SampVehicleNativeFunctions"
 
-export class SampVehicle extends SampVehicleNativeFunctions {
-    public state: Record<string, any> = {};
-    setState(newState: Record<string, any>) {
+export class SampVehicle<T = Record<string, any>> extends SampVehicleNativeFunctions {
+    // @ts-ignore
+    public state: T = {};
+    setState(newState: T) {
         this.state = {...this.state, ...newState};
     }
 

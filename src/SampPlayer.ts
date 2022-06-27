@@ -4,8 +4,9 @@ import {TextDraw, TextDrawConfig} from "./TextDraw";
 import {TextDraws} from "./TextDraws";
 import {createPromise} from "./createPromise";
 
-export class SampPlayer extends SampPlayerNativeFunctions {
-    state: Record<string, any> = {};
+export class SampPlayer<T = Record<string, any>> extends SampPlayerNativeFunctions {
+    // @ts-ignore
+    state: T = {};
     private dialog: Record<string, (result: {response: number, listitem: number, inputtext: string}) => void> = {};
     private variables: any = {};
 
@@ -45,7 +46,7 @@ export class SampPlayer extends SampPlayerNativeFunctions {
         }
     }
 
-    setState(newState: Record<string, any>) {
+    setState(newState: T) {
         this.state = {...this.state, ...newState};
     }
 
